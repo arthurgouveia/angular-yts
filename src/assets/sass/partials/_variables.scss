@@ -1,0 +1,15 @@
+$font-size: 16;
+
+// Sprite mappers
+$sprite: sprite-map("sprite/standard/*.png", $layout: "smart");
+
+//colors (paraiba.js theme)
+$color-beige: #fcf9f2;
+$color-gray: #333;
+$color-red: #e54b3f;
+$color-white: #fff;
+$color-blue: #3f65e5;
+
+//Grid
+$grid-width: 1100;
+$grid-columns: 12;

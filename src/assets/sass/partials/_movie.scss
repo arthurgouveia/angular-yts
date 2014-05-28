@@ -1,0 +1,45 @@
+.movie-info {
+    @include clearfix();
+    padding-bottom: u(15);
+    background: darken($color-beige, 10%);
+}
+
+    .movie-header {
+        color: $color-white;
+        background: $color-gray;
+        height: u(40);
+        line-height: u(40);
+        font-size: u(20);
+        padding: u(0 15);
+        margin-bottom: u(15);
+    }
+
+    .movie-thumb {
+        float: left;
+        width: 30%;
+        padding-left: u(15);
+
+        img {
+            width: 100%;
+        }
+
+        .btn {
+            display: block;
+            text-align: center;
+        }
+    }
+
+    .movie-details {
+        float: left;
+        width: 70%;
+        padding: u(0 15);
+    }
+
+        .movie-attributes {
+            margin: 0;
+            padding: 0;
+
+            dt {
+                font-weight: 700;
+            }
+        }

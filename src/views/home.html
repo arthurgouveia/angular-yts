@@ -1,0 +1,183 @@
+            <div ng-controller="MoviesController" ng-init="init();">
+
+                <form class="search-form" name="searchMovies" role="search" ng-submit="getMovies(search);">
+
+                    <legend>Search YIFY Torrents database</legend>
+
+                    <div class="row form-row">
+
+                        <label for="keywords">Keywords</label>
+                        <input type="text" ng-change="getMovies(search);" ng-model="search.keywords">
+
+                    </div>
+
+                    <div class="row form-row">
+
+                        <div class="grid-2">
+
+                            <label for="quality">Quality</label>
+                            <select custom-select type="text" ng-change="getMovies(search);" ng-model="search.quality" ng-options="value as value for value in criteria.quality"></select>
+
+                        </div>
+
+                        <div class="grid-4">
+
+                            <label for="rating">Genre</label>
+                            <select custom-select type="text" ng-change="getMovies(search);" ng-model="search.genre" ng-options="value as value for value in criteria.genre"></select>
+
+                        </div>
+
+                        <div class="grid-2">
+
+                            <label for="rating">Rating</label>
+                            <select custom-select type="text" ng-change="getMovies(search);" ng-model="search.rating" ng-options="rating.value as rating.label for rating in criteria.rating"></select>
+
+                        </div>
+
+                        <div class="grid-2">
+
+                            <label for="sort">Sort By</label>
+                            <select custom-select type="text" ng-change="getMovies(search);" ng-model="search.sort" ng-options="sort.value as sort.label for sort in criteria.sort"></select>
+
+                        </div>
+
+                        <div class="grid-2">
+
+                            <label for="order">Order By</label>
+                            <select custom-select type="text" ng-change="getMovies(search);" ng-model="search.order" ng-options="order.value as order.label for order in criteria.order"></select>
+
+                        </div>
+
+                    </div>
+
+                </form>
+
+                <div ng-if="showSearchLoader === true" class="loader -form-loader">Loading...</div>
+
+                <div class="row search-container">
+
+                    <div class="grid-6" ng-if="searchedMovies.length > 0 || emptyResult !== null">
+
+                        <h2>Search results</h2>
+
+                        <p ng-if="emptyResult">
+                            Error: {{ emptyResult }}
+                        </p>
+
+                        <ul class="movies-list">
+                            <li ng-repeat="movie in searchedMovies">
+                                <a href="" ng-click="showMoreInfo(movie);">
+                                    <span class="quality-label -q{{movie.Quality}}">
+                                        <small>{{ movie.Quality }}</small>
+                                    </span>
+                                    {{movie.MovieTitleClean}} ({{ movie.MovieYear}})
+                                </a>
+                            </li>
+                        </ul>
+
+                        <button class="btn" ng-click="cleanSearchParams();">Clear search</button>
+
+                    </div>
+
+                    <div class="grid-6" ng-if="selectedMovie.MovieTitle !== undefined">
+
+                        <article class="movie-info">
+
+                            <header class="movie-header">
+                                Movie details
+                            </header>
+
+                            <div class="movie-thumb">
+                                <img ng-src="{{selectedMovie.CoverImage}}" alt="{{selectedMovie.MovieTitleClean}} - {{selectedMovie.MovieYear}}">
+
+                                <p>
+                                    <a class="btn" ng-href="{{ selectedMovie.TorrentMagnetUrl }}">Magnet link</a>
+                                </p>
+
+                                <p>
+                                    <a class="btn" ng-href="{{ selectedMovie.TorrentUrl }}">Download torrent</a>
+                                </p>
+
+                                <p>
+                                    <a class="btn" ng-href="http://www.yifysubtitles.com/movie-imdb/{{ selectedMovie.ImdbCode }}" target="_blank">Download subtitles</a>
+                                </p>
+                            </div>
+
+                            <div class="movie-details">
+                                <dl class="movie-attributes">
+                                    <dt>Title:</dt> <dd>{{ selectedMovie.MovieTitleClean }}</dd>
+                                    <dt>Year:</dt> <dd>{{ selectedMovie.MovieYear }}</dd>
+                                    <dt>Quality:</dt> <dd>{{ selectedMovie.Quality }}</dd>
+                                    <dt>Size:</dt> <dd>{{ selectedMovie.Size }}</dd>
+                                    <dt>Genre:</dt> <dd>{{ selectedMovie.Genre }}</dd>
+                                    <dt>IMDB Rating:</dt> <dd>{{ selectedMovie.MovieRating }}/10</dd>
+                                    <dt>IMDB Code:</dt> <dd><a ng-href="{{ selectedMovie.ImdbLink }}" target="_blank">{{ selectedMovie.ImdbCode }}</a></dd>
+                                    <dt>YIFY Downloads:</dt> <dd>{{ selectedMovie.Downloaded }}</dd>
+                                    <dt>YIFY Peers/Seeds:</dt> <dd>{{ selectedMovie.TorrentPeers }}/{{ selectedMovie.TorrentSeeds }}</dd>
+                                    <dt>YIFY Link:</dt> <dd><a ng-href="{{ selectedMovie.MovieUrl }}" target="_blank">Click here</a></dd>
+                                </dl>
+                            </div>
+
+                        </article>
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="grid-4">
+
+                        <h2>Most downloaded</h2>
+
+                        <p ng-show="mostDownloaded.length === 0" class="loader">Loading...</p>
+
+                        <ul class="movies-list">
+                            <li ng-repeat="movie in mostDownloaded">
+                                <a href="" ng-click="showMoreInfo(movie);">
+                                    <span class="quality-label -q{{movie.Quality}}">
+                                        <small>{{ movie.Quality }}</small>
+                                    </span>
+                                    {{movie.MovieTitleClean}} ({{ movie.MovieYear}})
+                                </a>
+                            </li>
+                        </ul>
+
+                    </div>
+
+                    <div class="grid-4">
+
+                        <h2>Latest</h2>
+
+                        <p ng-show="latestMovies.length === 0" class="loader">Loading...</p>
+
+                        <ul class="movies-list">
+                            <li ng-repeat="movie in latestMovies">
+                                <a href="" ng-click="showMoreInfo(movie);">
+                                    <span class="quality-label -q{{movie.Quality}}">
+                                        <small>{{ movie.Quality }}</small>
+                                    </span>
+                                    {{movie.MovieTitleClean}} ({{ movie.MovieYear}})
+                                </a>
+                            </li>
+                        </ul>
+
+                    </div>
+
+                    <div class="grid-4">
+
+                        <h2>Coming soon</h2>
+
+                        <p ng-show="upcomingMovies.length === 0" class="loader">Loading...</p>
+
+                        <ul class="movies-list">
+                            <li ng-repeat="movie in upcomingMovies">
+                                {{movie.MovieTitle}}
+                            </li>
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>

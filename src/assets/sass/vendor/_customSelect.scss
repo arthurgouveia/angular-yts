@@ -1,0 +1,40 @@
+.customSelect {
+    border: none;
+    height: u(30);
+    line-height: u(30);
+    background: darken($color-beige, 10%);
+    display: block;
+    width: 100%;
+    padding: u(0 12);
+    font-size: u(14);
+    color: $color-gray;
+}
+
+.customSelect.customSelectHover {
+    .customSelectInner {
+        &:after {
+            border-color: $color-red transparent transparent transparent;
+        }
+    }
+}
+
+.customSelect.customSelectOpen {
+/* Styles for when the select box is open */
+}
+
+.customSelect.customSelectFocus {
+/* Styles for when the select box is in focus */
+}
+
+.customSelectInner {
+    &:after {
+        content: '';
+        float: right;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: u(10 5 0 5);
+        border-color: $color-gray transparent transparent transparent;
+        margin-top: u(11);
+    }
+}

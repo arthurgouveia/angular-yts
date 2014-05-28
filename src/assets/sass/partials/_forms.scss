@@ -1,0 +1,55 @@
+.search-form {
+    border-bottom: 1px solid $color-gray;
+    width: u($grid-width);
+    margin: 0 auto;
+}
+
+legend {
+    font-weight: 700;
+    font-size: u(21);
+    margin-bottom: u(10);
+}
+
+.form-row {
+    margin-bottom: u(15);
+}
+
+label {
+    display: block;
+    font-weight: 700;
+    font-size: u(15);
+}
+
+input[type=text] {
+    border: none;
+    height: u(30);
+    line-height: u(30);
+    background: darken($color-beige, 10%);
+    display: block;
+    width: 100%;
+    padding: u(0 12);
+    font-size: u(14);
+    color: $color-gray;
+}
+
+select {
+    width: 100%;
+}
+
+.btn {
+    border: none;
+    color: $color-white;
+    background: $color-red;
+    height: u(30);
+    line-height: u(30);
+    font-size: u(14);
+    padding: u(0 12);
+
+    &:hover {
+        background: lighten($color-red, 10%);
+    }
+}
+
+.-submit {
+    float: right;
+}

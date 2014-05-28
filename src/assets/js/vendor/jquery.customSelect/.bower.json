@@ -1,0 +1,25 @@
+{
+  "name": "jquery.customSelect",
+  "main": [
+    "./jquery.customSelect.js",
+    "./jquery.customSelect.min.js"
+  ],
+  "dependencies": {
+    "jquery": ">=1.7.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/adamcoulombe/jquery.customSelect.git"
+  },
+  "homepage": "https://github.com/adamcoulombe/jquery.customSelect",
+  "_release": "6af8d1596c",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "6af8d1596c13b4ce07b8445db11a3bc74f2d7c3e"
+  },
+  "_source": "git://github.com/adamcoulombe/jquery.customSelect.git",
+  "_target": "*",
+  "_originalSource": "jquery.customSelect",
+  "_direct": true
+}

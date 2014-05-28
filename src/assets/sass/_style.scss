@@ -1,0 +1,130 @@
+@import 'compass';
+@import 'partials/normalize';
+@import 'partials/h5bp/base';
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+*,
+*:before,
+*:after {
+    @include box-sizing(border-box);
+}
+
+body {
+    background: $color-beige;
+    color: $color-gray;
+    font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
+    font-weight: 400;
+}
+
+a {
+    text-decoration: none;
+    color: $color-red;
+}
+
+ul {
+    list-style: square;
+    padding-left: u(18);
+}
+
+.main {
+    padding: u(50 0);
+}
+
+.search-container {
+    padding-top: u(20);
+
+    h2 {
+        margin-top: 0;
+    }
+}
+
+    .movies-list {
+        li {
+            @include transition(all .25s);
+            @include transform(translateX(0));
+
+            &:hover {
+                @include transform(translateX(15px));
+            }
+
+            a {
+                display: block;
+                font-size: u(14);
+            }
+        }
+    }
+
+        .quality-label {
+            display: inline-block;
+            width: u(50);
+            color: $color-white;
+
+            &.-q1080p{
+                background-color: $color-red;
+            }
+
+            &.-q720p{
+                background-color: lighten($color-red, 10%);
+            }
+
+            &.-q3D{
+                background-color: $color-blue;
+                color: $color-red;
+                font-weight: 700;
+            }
+
+            small {
+                display: inline-block;
+                height: u(18);
+                width: 100%;
+                line-height: u(18);
+                padding: u(0 2);
+                font-size: u(12);
+                text-align: center;
+            }
+        }
+
+@include keyframes(spin) {
+    from {
+        @include transform(rotate3d(0, 0, 0, 360deg));
+    }
+
+    to {
+        @include transform(rotate3d(0, 1, 0, 360deg));
+    }
+}
+
+.loader {
+    text-align: center;
+
+    &:before {
+        content: '';
+        @include sprite($sprite, pbjs, true);
+        @include animation(spin 1s linear infinite);
+        display: block;
+        background-image: $sprite;
+        margin: u(20 auto);
+    }
+
+    &.-form-loader {
+        border-bottom: 1px solid $color-gray;
+        padding-bottom: u(15);
+        margin: u(0 auto 10);
+        width: u($grid-width);
+    }
+}
+
+@import 'partials/grid';
+
+@import 'partials/header';
+@import 'partials/footer';
+@import 'partials/forms';
+@import 'partials/movie';
+
+@import 'vendor/customSelect';
+
+
+@import 'partials/h5bp/helpers';

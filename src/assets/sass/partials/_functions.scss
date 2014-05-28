@@ -1,0 +1,49 @@
+@function u($values){
+
+    $list: ();
+
+    @each $value in $values {
+
+        @if $value == 'auto' {
+            $list: append($list, $value);
+        }
+
+        @else {
+
+            @if ($px-only) {
+                $list: append($list, $value + px);
+            }
+
+            @else {
+                $list: append($list, ($value/$font-size) + rem);
+            }
+
+        }
+
+    }
+
+    @return $list();
+
+}
+
+@mixin keyframes($name) {
+    @-webkit-keyframes #{$name} {
+        @content;
+    }
+    @-moz-keyframes #{$name} {
+        @content;
+    }
+    @-ms-keyframes #{$name} {
+        @content;
+    }
+    @keyframes #{$name} {
+        @content;
+    }
+}
+
+@mixin animation($params) {
+    -webkit-animation: #{$params};
+    -moz-animation:    #{$params};
+    -o-animation:      #{$params};
+    animation:         #{$params};
+}

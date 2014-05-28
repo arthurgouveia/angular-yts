@@ -1,0 +1,11 @@
+.header {
+    background: $color-gray;
+    height: u(50);
+    line-height: u(50);
+
+    a {
+        color: $color-red;
+        font-size: u(36);
+        font-weight: 700;
+    }
+}

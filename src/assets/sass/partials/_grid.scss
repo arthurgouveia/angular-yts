@@ -1,0 +1,57 @@
+.row {
+    width: u($grid-width);
+    margin: 0 auto;
+}
+
+.row {
+    &:after,
+    &:before {
+        content: " ";
+        display: table;
+    }
+}
+
+.row {
+    &:after {
+        clear: both;
+    }
+}
+
+[class*="grid"] {
+    position: relative;
+    padding: u(0 14);
+    float: left;
+    min-height:1px;
+
+    &:first-child {
+        padding-left: 0;
+    }
+
+    &:last-child {
+        padding-right: 0;
+    }
+
+    &.no-padding {
+        padding: 0;
+    }
+
+    &.no-padding-left {
+        padding-left: 0;
+    }
+}
+
+@for $i from 1 to ($grid-columns + 1) {
+
+    .grid-#{$i} {
+        width: u($grid-width * ($i/$grid-columns));
+    }
+
+}
+
+@for $i from 1 to ($grid-columns + 1) {
+
+    .offset-grid-#{$i} {
+        margin-left: u($grid-width * ($i/$grid-columns));
+    }
+
+}

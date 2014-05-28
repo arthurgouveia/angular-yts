@@ -1,0 +1,12 @@
+{
+    "name":         "jquery.customSelect",
+    "version":      "0.5.1",
+    "main":         ["./jquery.customSelect.js", "./jquery.customSelect.min.js"],
+    "dependencies": {
+        "jquery": ">=1.7.2"
+    },
+    "repository":   {
+        "type": "git",
+        "url":  "git://github.com/adamcoulombe/jquery.customSelect.git"
+    }
+}
