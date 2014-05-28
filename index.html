@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html class="no-js" ng-app="angularYTS">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta charset="utf-8">
+
+        <title>AngularYTS - Simple Angular.js YIFY torrents browser</title>
+        <meta name="description" content="This is just an example of markup with decent semantics for your personal use.">
+        <meta name="viewport" content="width=1140">
+
+        <meta property="og:title" content="AngularYTS - Simple Angular.js YIFY torrents browser">
+        <meta property="og:description" content="AngularYTS is an Angular.js application that consumes YIFY torrents public API, providing a good UI for general searches.">
+        <meta property="og:site_name" content="AngularYTS - Simple Angular.js YIFY torrents browser">
+        <meta property="og:image" content="http://arthurgouveia.com/angular-yts/facebook.png">
+
+        <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700' rel='stylesheet' type='text/css'>
+
+        <!--[if (gt IE 8) | (IEMobile)]><!-->
+            <link rel="stylesheet" href="assets/css/main.css">
+        <!--<![endif]-->
+
+        <!--[if (lt IE 9) & (!IEMobile)]>
+            <link rel="stylesheet" href="assets/css/main-ie.css">
+        <![endif]-->
+
+        <script src="assets/js/vendor/modernizr/modernizr.js"></script>
+    </head>
+    <body>
+
+        <!--[if (lt IE 9) & (!IEMobile)]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <header class="header" role="banner">
+
+            <div class="row">
+
+                <a href="/" title="AngularYTS - YIFY Database Search App" tabindex="0">AngularYTS</a>
+
+            </div>
+
+        </header>
+
+        <main class="main" role="main" ng-view>
+
+        </main>
+
+        <footer class="footer" role="contentinfo">
+
+            <small>
+                This project has no association, whatsoever, with
+                <a href="https://yify-torrents.com/" target="_blank">YIFY Torrents</a>.<br>
+                It is a mere showcase of <a href="https://angularjs.org/" target="_blank">Angular.js</a> usage consuming <a href="https://yts.re/api" target="_blank">YIFY Torrents public API</a>.<br>
+                Use at your own risk and responsibility.
+            </small>
+
+            <small>
+                Made with
+                <a href="http://en.wikipedia.org/wiki/Caffeine" target="_blank">
+                    C<sup>8</sup>H<sup>10</sup>N<sup>4</sup>O<sup>2</sup>
+                </a>, <i class="icon -love">&lt;3</i> &amp;
+                <a href="https://github.com/arthurgouveia/bebop"><i class="icon -love">Bebop</i></a>,
+                by <a href="http://github.com/arthurgouveia">Arthur Gouveia</a>.
+            </small>
+
+        </footer>
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="assets/js/vendor/jquery/dist/jquery.min.js"><\/script>')</script>
+        <script src="assets/js/scripts.min.js"></script>
+
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <script>
+            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+            e.src='//www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+            ga('create','UA-XXXXX-X');ga('send','pageview');
+        </script>
+    </body>
+</html>
